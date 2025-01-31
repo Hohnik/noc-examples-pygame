@@ -31,8 +31,8 @@ class Walker:
 
     def step(self):
         r = random.random()
-
-        if r <0.4:
+        # A 40% of moving to the right!
+        if r < 0.4:
             self.x += 1
         elif r < 0.6:
             self.x -= 1

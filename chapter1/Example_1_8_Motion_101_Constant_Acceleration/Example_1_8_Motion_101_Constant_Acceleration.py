@@ -2,31 +2,32 @@
 # Daniel Shiffman
 # http://natureofcode.com
 
-import random
-
 import pygame
+from mover import Mover
+
+mover = None
 
 
 def setup():
+    global mover
     screen = pygame.display.set_mode((640, 360))
-    screen.fill((255, 255, 255))
+    mover = Mover(screen)
     return screen
 
 
-def draw(screen: pygame.Surface):
-    # {!1} A normal distribution with mean 320 and standard deviation 60
-    x = random.gauss(320, 60)
+def draw(screen):
+    global mover
+    screen.fill((255, 255, 255))
 
-    surface = pygame.Surface((screen.get_width(), screen.get_height()), pygame.SRCALPHA)
-    pygame.draw.circle(surface, (0, 0, 0, 10), (x, 180), 16)
-    screen.blit(surface, (0, 0))
+    mover.update()
+    mover.checkEdges()
+    mover.show()
 
 
 if __name__ == "__main__":
     pygame.init()
-    clock = pygame.time.Clock()
-
     screen = setup()
+    clock = pygame.time.Clock()
 
     running = True
     while running:

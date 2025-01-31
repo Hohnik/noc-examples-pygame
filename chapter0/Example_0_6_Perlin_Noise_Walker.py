@@ -11,9 +11,9 @@ walker = None
 
 def setup():
     global walker
-    screen = pygame.display.set_mode((640, 360))
+    screen = pygame.display.set_mode((640, 360))  # creating canvas of size 640 x 360
+    walker = Walker(screen)  # creating an instance/object of class Walker
     screen.fill((255, 255, 255))
-    walker = Walker(screen)
 
 
 def draw(screen):
@@ -26,11 +26,11 @@ class Walker:
     def __init__(self, screen):
         self.screen = screen
         self.tx = 0
-        self.ty = 1
+        self.ty = 1000
 
     def show(self):
-        pygame.draw.circle(self.screen, (127,127,127), (self.x, self.y), 24)
-        pygame.draw.circle(self.screen, (0,0,0), (self.x, self.y), 24, 1)
+        pygame.draw.circle(self.screen, (127, 127, 127), (self.x, self.y), 24)
+        pygame.draw.circle(self.screen, (0, 0, 0), (self.x, self.y), 24, 1)
 
     def step(self):
         # {!2} x- and y-position mapped from noise
@@ -41,8 +41,12 @@ class Walker:
         self.tx += 0.01
         self.ty += 0.01
 
+
 def remap(value, min_val, max_val, target_min=0, target_max=1):
-    return target_min + (value - min_val) * (target_max - target_min) / (max_val - min_val)
+    return target_min + (value - min_val) * (target_max - target_min) / (
+        max_val - min_val
+    )
+
 
 if __name__ == "__main__":
     pygame.init()

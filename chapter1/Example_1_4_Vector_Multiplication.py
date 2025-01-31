@@ -2,31 +2,34 @@
 # Daniel Shiffman
 # http://natureofcode.com
 
-import random
-
 import pygame
+
+# Example 1-4: Vector multiplication
 
 
 def setup():
     screen = pygame.display.set_mode((640, 360))
-    screen.fill((255, 255, 255))
     return screen
 
 
 def draw(screen: pygame.Surface):
-    # {!1} A normal distribution with mean 320 and standard deviation 60
-    x = random.gauss(320, 60)
+    screen.fill((255, 255, 255))
 
-    surface = pygame.Surface((screen.get_width(), screen.get_height()), pygame.SRCALPHA)
-    pygame.draw.circle(surface, (0, 0, 0, 10), (x, 180), 16)
-    screen.blit(surface, (0, 0))
+    mouse = pygame.Vector2(pygame.mouse.get_pos())
+    center = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
+
+    pygame.draw.line(screen, "gray80", (center), (mouse), 4)
+
+    # {!1} Multiplying a vector!  The vector is now half its original size (multiplied by 0.5).
+    mouse *= 0.5
+
+    pygame.draw.line(screen, "black", (center), (mouse + 0.5 * center), 4)
 
 
 if __name__ == "__main__":
     pygame.init()
-    clock = pygame.time.Clock()
-
     screen = setup()
+    clock = pygame.time.Clock()
 
     running = True
     while running:

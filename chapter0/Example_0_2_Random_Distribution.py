@@ -6,6 +6,7 @@ import random
 
 import pygame
 
+# An array to keep track of how often random numbers are picked
 randomCounts = [0 for _ in range(20)]
 total = 20
 
@@ -13,10 +14,12 @@ total = 20
 def setup(screen): ...
 
 
-def draw(screen):
+def draw(screen: pygame.Surface):
+    screen.fill("white")
     index = random.randint(0, total - 1)
     randomCounts[index] += 1
 
+    # Draw a rectangle to graph results
     w = screen.get_width() / len(randomCounts)
 
     for x in range(len(randomCounts)):

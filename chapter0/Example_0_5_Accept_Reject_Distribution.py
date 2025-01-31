@@ -6,7 +6,9 @@ import random
 
 import pygame
 
+# An array to keep track of how often random numbers are picked
 randomCounts = [0 for _ in range(20)]
+
 
 def setup():
     screen = pygame.display.set_mode((640, 360))
@@ -15,9 +17,11 @@ def setup():
 
 
 def draw(screen):
+    # Pick a random number and increase the count
     index = int(accept_reject() * len(randomCounts))
     randomCounts[index] += 1
 
+    # Draw a rectangle to graph results
     w = screen.get_width() / len(randomCounts)
 
     for x in range(len(randomCounts)):
@@ -26,6 +30,9 @@ def draw(screen):
         )
         pygame.draw.rect(screen, (127, 127, 127), rect)
 
+
+# An algorithm for picking a random number based on monte carlo method
+# Here probability is determined by formula y = x
 def accept_reject():
     # We do this “forever” until we find a qualifying random value.
     while True:
@@ -35,9 +42,10 @@ def accept_reject():
         probability = r1
         # Pick a second random value.
         r2 = random.random()
-        #{!3} Does it qualify?  If so, we’re done!
-        if (r2 < probability):
-              return r1
+        # {!3} Does it qualify?  If so, we’re done!
+        if r2 < probability:
+            return r1
+
 
 if __name__ == "__main__":
     pygame.init()

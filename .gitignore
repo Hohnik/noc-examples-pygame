@@ -3,3 +3,6 @@
 pyproject.toml
 .python-version
 uv.lock
+__pycache__/
+.pre-commit-config.yaml
+
