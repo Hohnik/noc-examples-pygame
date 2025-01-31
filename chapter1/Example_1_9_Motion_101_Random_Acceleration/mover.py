@@ -12,11 +12,17 @@ class Mover:
         self.position = pygame.Vector2(
             random.random() * screen.get_width(), random.random() * screen.get_height()
         )
-        self.velocity = pygame.Vector2(random.random() * 4 - 2, random.random() * 4 - 2)
-        self.acceleration = pygame.Vector2(-0.001, 0.01)
-        self.topSpeed = 10
+        self.velocity = pygame.Vector2()
+        self.acceleration = pygame.Vector2()
+        self.topSpeed = 5
 
     def update(self):
+        # The random2D() function returns a unit vector pointing in a random direction.
+        self.acceleration = pygame.Vector2(
+            random.random() - 0.5, random.random() - 0.5
+        ).normalize()
+        self.acceleration *= random.random() * 2
+
         self.velocity += self.acceleration
         self.velocity = self.velocity.clamp_magnitude(self.topSpeed)
         self.position += self.velocity
