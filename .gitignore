@@ -1,6 +1,5 @@
 .DS_Store
 .venv/
-pyproject.toml
 .python-version
 uv.lock
 __pycache__/

@@ -1,0 +1,16 @@
+[project]
+name = "noc-examples-pygame"
+version = "0.1.0"
+description = "Nature of code examples pygame port "
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "noise>=1.2.2",
+    "pygame-ce>=2.5.2",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.1.0",
+    "pytest>=8.3.4",
+]
