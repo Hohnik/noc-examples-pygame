@@ -21,7 +21,7 @@ def draw(screen):
 
     mover.update()
     mover.checkEdges()
-    mover.show()
+    mover.display()
 
 
 if __name__ == "__main__":

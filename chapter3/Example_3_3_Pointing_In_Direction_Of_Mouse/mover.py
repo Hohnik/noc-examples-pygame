@@ -1,7 +1,8 @@
 # The Nature of Code
 # Daniel Shiffman
 # http://natureofcode.com
-import random
+
+import math
 
 import pygame
 
@@ -9,27 +10,35 @@ import pygame
 class Mover:
     def __init__(self, screen: pygame.Surface):
         self.screen = screen
-        self.position = pygame.Vector2(
-            random.random() * screen.get_width(), random.random() * screen.get_height()
-        )
+        self.position = pygame.Vector2(screen.get_width(), screen.get_height())
         self.velocity = pygame.Vector2()
-        self.acceleration = pygame.Vector2()
-        self.topSpeed = 5
+        self.acceleration = 0
+        self.topSpeed = 4
+        self.xoff = 1000
+        self.yoff = 0
+        self.r = 16
 
     def update(self):
-        # The random2D() function returns a unit vector pointing in a random direction.
-        self.acceleration = pygame.Vector2(
-            random.random() - 0.5, random.random() - 0.5
-        ).normalize()
-        self.acceleration *= random.random() * 2
+        mouse = pygame.Vector2(pygame.mouse.get_pos())
+        dir = mouse - self.position
+        dir.scale_to_length(0.5)
+        self.acceleration = dir
 
         self.velocity += self.acceleration
         self.velocity = self.velocity.clamp_magnitude(self.topSpeed)
         self.position += self.velocity
 
-    def show(self):
-        pygame.draw.circle(self.screen, "gray50", self.position, 24)
-        pygame.draw.circle(self.screen, "black", self.position, 24, 2)
+    def display(self):
+        angle = math.atan2(self.velocity.x, self.velocity.y)
+        angle = math.degrees(angle)
+
+        car = pygame.Surface((20, 50), pygame.SRCALPHA)
+        car.fill("gray50")
+        pygame.draw.rect(car, (0, 0, 0), (0, 0, 20, 50), 2)
+
+        rotated_car = pygame.transform.rotate(car, angle)
+        car_rect = rotated_car.get_rect(center=(self.position.x, self.position.y))
+        self.screen.blit(rotated_car, car_rect.topleft)
 
     def checkEdges(self):
         if self.position.x > self.screen.get_width():
