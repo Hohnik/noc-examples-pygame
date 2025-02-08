@@ -10,40 +10,32 @@ from emitter import Emitter
 # A ParticleSystem object manages a variable size
 # list of particles.
 
-# an array of ParticleSystems
-emitters = []
+emitter = None
 
 
 def setup():
+    global emitter
     screen = pygame.display.set_mode((640, 360))
-    print("click to add particle systems")
+    emitter = Emitter(screen, screen.get_width() / 2, 20)
     return screen
 
 
 def draw(screen: pygame.Surface):
-    global emitters
+    global emitter
     screen.fill("white")
-    for emitter in emitters:
-        emitter.run()
-        emitter.addParticle()
+    emitter.addParticle()
+    emitter.run()
 
 
 if __name__ == "__main__":
     pygame.init()
     clock = pygame.time.Clock()
-
     screen = setup()
-
     running = True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                mouseX, mouseY = pygame.mouse.get_pos()
-                emitters.append(Emitter(screen, mouseX, mouseY))
-
         draw(screen)
-
         pygame.display.flip()
         clock.tick(60)
