@@ -1,10 +1,12 @@
 # The Nature of Code
 # Daniel Shiffman
 # http://natureofcode.com
+
 import pygame
 from particle import Particle
 
 
+# The Emitter manages all the particles.
 class Emitter:
     def __init__(self, screen, x, y):
         self.screen = screen
@@ -13,6 +15,17 @@ class Emitter:
 
     def addParticle(self):
         self.particles.append(Particle(self.screen, self.origin.x, self.origin.y))
+
+    def applyForce(self, force):
+        # Applying a force as a pygame.Vector2
+        for particle in self.particles:
+            particle.applyForce(force)
+
+    def applyRepeller(self, repeller):
+        # Calculating a force for each Particle based on a Repeller
+        for particle in self.particles:
+            force = repeller.repel(particle)
+            particle.applyForce(force)
 
     def run(self):
         # Looping through backwards to delete
