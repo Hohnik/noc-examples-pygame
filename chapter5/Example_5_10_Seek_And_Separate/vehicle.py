@@ -14,42 +14,66 @@ class Vehicle:
         self.position = pygame.Vector2(x, y)
         self.acceleration = pygame.Vector2(0, 0)
         self.velocity = pygame.Vector2(0, 0)
-        self.r = 12
-        self.maxspeed = 1.5  # Maximum speed
+        self.maxspeed = 3  # Maximum speed
         self.maxforce = 0.2  # Maximum steering force
+        self.r = 6
 
     def applyForce(self, force):
         # We could add mass here if we want A = F / M
         self.acceleration += force
 
+    def applyBehaviors(self, vehicles):
+        separateForce = self.separate(vehicles)
+        seekForce = self.seek(pygame.Vector2(*pygame.mouse.get_pos()))
+
+        separateForce *= 1.5
+        seekForce *= 0.5
+
+        self.applyForce(separateForce)
+        self.applyForce(seekForce)
+
     # Separation
     # Method checks for nearby vehicles and steers away
     def separate(self, vehicles):
-        # Note how the desired separation is based
-        # on the Vehicle's size.
-        desiredSeparation = self.r * 3
+        desiredSeparation = self.r * 2
         sum = pygame.Vector2()
         count = 0
+        # For every vehicle in the system, check if it't too close
         for other in vehicles:
             d = self.position.distance_to(other.position)
-            if d == 0:
-                continue
 
             if self is not other and d < desiredSeparation:
                 diff = self.position - other.position
-                # What is the magnitude of the Vector
-                # pointing away from the other vehicle?
-                # The closer it is, the more the vehicle should flee.
-                # The farther, the less. So the magnitude is set
-                # to be inversely proportional to the distance.
-                diff.scale_to_length(1 / d)
+                diff.scale_to_length(1 / d)  # Weight by distance
                 sum += diff
-                count += 1
+                count += 1  # Keep track of how many
+
+        # Average -- device by how many
         if count > 0:
+            sum /= count
+            # Our desired vector is the average scaled to maximum speed
             sum.scale_to_length(self.maxspeed)
-            steer = sum - self.velocity
-            steer.clamp_magnitude_ip(self.maxforce)
-            self.applyForce(steer)
+            # Implement Reynolds: Steering = Desired - Velocity
+            sum -= self.velocity
+            sum.clamp_magnitude_ip(self.maxforce)
+
+        return sum
+
+    # A method that calculates a steering force towards a target
+    # STEER = DESIRED MINUS VELOCITY
+    def seek(self, target):
+        desired = (
+            target - self.position
+        )  # A vector pointing from the location to the target
+
+        # Normalize desired and scale to maximum speed
+        desired.normalize_ip()
+        desired *= self.maxspeed
+
+        # Steering = Desired minus velocity
+        steer = desired - self.velocity
+        steer.clamp_magnitude_ip(self.maxforce)  # Limit to maximum steering force
+        return steer
 
     # Method to update position
     def update(self):
