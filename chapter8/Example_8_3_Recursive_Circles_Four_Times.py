@@ -18,11 +18,12 @@ def drawCircles(x, y, radius):
     screen = pygame.display.get_surface()
     pygame.draw.aacircle(screen, "black", (x, y), radius, 1)
 
-    if radius > 4:
-        # drawCircles() calls itself twice.
-        # For each circle, a smaller circle is drawn to the left and the right
+    if radius > 16:
+        # drawCircles() calls itself four times.
         drawCircles(x + radius / 2, y, radius / 2)
         drawCircles(x - radius / 2, y, radius / 2)
+        drawCircles(x, y + radius / 2, radius / 2)
+        drawCircles(x, y - radius / 2, radius / 2)
 
 
 if __name__ == "__main__":
