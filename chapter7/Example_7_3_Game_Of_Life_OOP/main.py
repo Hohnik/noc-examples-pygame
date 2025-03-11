@@ -8,7 +8,7 @@ from random import random
 import pygame
 from cell import Cell
 
-w = 180
+w = 8
 columns, rows = None, None
 board = None
 
@@ -19,6 +19,7 @@ def setup():
     width, height = screen.size
     columns = int(width // w)
     rows = int(height // w)
+    print(width, height, columns, rows)
     board = create2DArray(columns, rows)
     for i in range(1, columns - 1):
         for j in range(1, rows - 1):
