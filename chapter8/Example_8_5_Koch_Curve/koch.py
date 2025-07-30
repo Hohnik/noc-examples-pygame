@@ -21,12 +21,12 @@ class KochLine:
         self.end = b.copy()
 
     def show(self):
-        pygame.draw.line(
+        pygame.draw.aaline(
             self.screen,
             "black",
             (self.start.x, self.start.y),
             (self.end.x, self.end.y),
-            2,
+            1,
         )
 
     def kochPoints(self):
@@ -45,7 +45,7 @@ class KochLine:
         d = b + v
 
         # Rotate by -PI/3 radians (negative angle so it rotates "up").
-        v.rotate_ip(-math.pi / 3)
+        v.rotate_rad_ip(-math.pi / 3)
         # Move along
         c = b + v
 
