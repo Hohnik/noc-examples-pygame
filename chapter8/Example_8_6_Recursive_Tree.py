@@ -2,8 +2,9 @@
 # Daniel Shiffman
 # http://natureofcode.com
 
-import pygame
 import math
+
+import pygame
 
 # Recursive Tree
 # Renders a simple tree-like structure via recursion

@@ -2,9 +2,10 @@
 # Daniel Shiffman
 # http://natureofcode.com
 
-import pygame
 import math
 import random
+
+import pygame
 
 # Stochastic Tree
 # Renders a simple tree-like structure via recursion

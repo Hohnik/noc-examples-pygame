@@ -76,13 +76,12 @@ class QuadTree:
             if not self.divided:
                 self.subdivide()
 
-            if self.northeast.insert(point):
-                return True
-            elif self.northwest.insert(point):
-                return True
-            elif self.southeast.insert(point):
-                return True
-            elif self.southwest.insert(point):
+            if (
+                self.northeast.insert(point)
+                or self.northwest.insert(point)
+                or self.southeast.insert(point)
+                or self.southwest.insert(point)
+            ):
                 return True
 
     def query(self, area, found=None):
