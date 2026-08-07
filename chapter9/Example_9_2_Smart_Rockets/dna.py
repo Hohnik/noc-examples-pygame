@@ -1,14 +1,12 @@
 from __future__ import annotations
 
+import math
+import random
+
 # The Nature of Code
 # Daniel Shiffman
 # http://natureofcode.com
-
 import pygame
-
-import random
-import math
-
 from configs import lifeSpan
 
 
@@ -42,7 +40,7 @@ class DNA:
 
         # Before the midpoint genes from self DNA
         # After the midpoint from the partner DNA
-        child.genes = self.genes[midpoint:] + partner.genes[:midpoint]
+        child.genes = self.genes[:midpoint] + partner.genes[midpoint:]
 
         return child
 
