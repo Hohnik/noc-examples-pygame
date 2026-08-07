@@ -1,24 +1,42 @@
 name: Ruff
 run-name: ${{github.actor}} is checking the code with `ruff check --fix`
 on: [push]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ruff-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
-      - name: Run ruff check and format
-        uses: astral-sh/ruff-action@v3
-      - run: ruff check --fix
+      - name: Install ruff
+        uses: astral-sh/ruff-action@v4
+        with:
+          args: --version
+
+      - run: ruff check --fix --exit-zero
       - run: ruff format
 
       - name: Commit changes if any
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@users.noreply.github.com"
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
           git add -A
-          git diff --cached --exit-code || git commit -m "Apply ruff fixes"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          if git diff --cached --quiet; then
+            echo "No ruff fixes to commit."
+          else
+            git commit -m "Apply ruff fixes"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+
+      # Runs last so auto-fixes are already committed above; fails the job
+      # only on violations ruff could not fix itself.
+      - name: Report unfixable violations
+        run: ruff check --output-format=github
