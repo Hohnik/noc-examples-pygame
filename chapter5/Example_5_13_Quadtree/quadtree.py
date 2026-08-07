@@ -76,7 +76,12 @@ class QuadTree:
             if not self.divided:
                 self.subdivide()
 
-            if self.northeast.insert(point) or self.northwest.insert(point) or self.southeast.insert(point) or self.southwest.insert(point):
+            if (
+                self.northeast.insert(point)
+                or self.northwest.insert(point)
+                or self.southeast.insert(point)
+                or self.southwest.insert(point)
+            ):
                 return True
 
     def query(self, area, found=None):
@@ -99,6 +104,7 @@ class QuadTree:
         return found
 
     def show(self):
+        assert self.screen
         pygame.draw.rect(
             self.screen,
             "black",

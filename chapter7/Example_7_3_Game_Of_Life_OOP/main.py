@@ -39,7 +39,12 @@ def draw():
             neighborSum -= board[x][y].previous
 
             # Set the cell's new state based on the neighbor count
-            if board[x][y].state == 1 and neighborSum < 2 or board[x][y].state == 1 and neighborSum > 3:
+            if (
+                board[x][y].state == 1
+                and neighborSum < 2
+                or board[x][y].state == 1
+                and neighborSum > 3
+            ):
                 board[x][y].state = 0
             elif board[x][y].state == 0 and neighborSum == 3:
                 board[x][y].state = 1
