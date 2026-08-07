@@ -22,7 +22,6 @@ def setup():
 
 
 def draw(screen: pygame.Surface):
-    global debug, vehicles, flowfield
     screen.fill((255, 255, 255))
 
     flock.run()

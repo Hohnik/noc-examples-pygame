@@ -27,7 +27,6 @@ def setup():
 
 
 def draw():
-    global columns, rows, board
 
     # Looping but skipping the edge cells
     for x in range(1, columns - 1):

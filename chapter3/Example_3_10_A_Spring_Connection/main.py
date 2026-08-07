@@ -26,7 +26,7 @@ def setup():
 
 
 def draw(screen: pygame.Surface):
-    global bob, spring, running
+    global running
     screen.fill("white")
 
     # Apply a gravity force to the bob

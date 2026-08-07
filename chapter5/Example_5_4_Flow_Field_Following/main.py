@@ -22,7 +22,7 @@ vehicles = []
 
 
 def setup():
-    global vehicles, flowfield
+    global flowfield
     screen = pygame.display.set_mode((640, 360))
 
     print(
@@ -45,7 +45,7 @@ def setup():
 
 
 def draw(screen: pygame.Surface):
-    global debug, vehicles, flowfield
+    global debug
     screen.fill((255, 255, 255))
 
     # Displaay the flowfield in "debug" mode

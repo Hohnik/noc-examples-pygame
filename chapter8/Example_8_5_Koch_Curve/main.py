@@ -16,7 +16,7 @@ segments = []
 def setup():
     screen = pygame.display.set_mode((640, 360))
     screen.fill((255, 255, 255))
-    width, height = screen.size
+    width, _height = screen.size
 
     # Left side of canvas
     start = pygame.Vector2(0, 200)

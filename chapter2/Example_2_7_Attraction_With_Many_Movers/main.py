@@ -16,7 +16,7 @@ attractor = None
 
 
 def setup():
-    global movers, attractor
+    global attractor
     screen = pygame.display.set_mode((640, 360))
     width, height = screen.get_width(), screen.get_height()
     for i in range(len(movers)):
@@ -31,7 +31,7 @@ def setup():
 
 
 def draw(screen):
-    global attractor, movers, mousePressed, running
+    global mousePressed, running
     screen.fill((255, 255, 255))
 
     attractor.show()

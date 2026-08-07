@@ -25,7 +25,6 @@ def setup():
 
 
 def draw(screen: pygame.Surface):
-    global path
     screen.fill((255, 255, 255))
     # Display the path
     path.show()

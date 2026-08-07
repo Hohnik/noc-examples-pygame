@@ -28,7 +28,7 @@ def make2DArray(cols, rows):
 
 
 def setup():
-    global flock, grid, cols, rows, resolution
+    global flock, grid, cols, rows
     screen = pygame.display.set_mode((640, 360))
 
     width, height = screen.size
@@ -45,7 +45,6 @@ def setup():
 
 
 def draw(screen: pygame.Surface):
-    global flock, grid, cols, rows, resolution
     screen.fill((255, 255, 255))
     width, height = screen.size
 

@@ -16,7 +16,6 @@ def setup():
 
 
 def draw(screen):
-    global mover
     screen.fill((255, 255, 255))
 
     mover.update()

@@ -53,7 +53,7 @@ def render_text_list(lines, font, colour=(255, 255, 255)):
 
     line_height = font.get_linesize()
     width = max(line.get_width() for line in rendered)
-    tops = [int(round(i * line_height)) for i in range(len(rendered))]
+    tops = [round(i * line_height) for i in range(len(rendered))]
     height = tops[-1] + font.get_height()
 
     surface = pygame.Surface((width, height)).convert_alpha()

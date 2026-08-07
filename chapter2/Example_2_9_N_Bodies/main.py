@@ -11,7 +11,6 @@ bodies = [None for i in range(10)]
 
 
 def setup():
-    global bodies
     screen = pygame.display.set_mode((640, 360))
     width, height = screen.get_width(), screen.get_height()
     for i in range(len(bodies)):
@@ -22,7 +21,6 @@ def setup():
 
 
 def draw(screen):
-    global bodies
     screen.fill((255, 255, 255))
 
     for bodyA in bodies:

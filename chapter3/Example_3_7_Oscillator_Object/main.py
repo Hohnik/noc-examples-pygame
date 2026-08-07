@@ -10,7 +10,6 @@ oscillators = []
 
 
 def setup():
-    global oscillators
     screen = pygame.display.set_mode((640, 360))
     # Initialize all objects
     for i in range(10):
@@ -19,7 +18,6 @@ def setup():
 
 
 def draw(screen: pygame.Surface):
-    global oscillators
     screen.fill((255, 255, 255))
     # Run all objects
     for oscillator in oscillators:

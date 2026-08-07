@@ -24,7 +24,6 @@ def setup():
 
 
 def draw(screen: pygame.Surface):
-    global emitter
     # Try additive blending!
     # blendMode(ADD);
     screen.fill((0, 0, 0))

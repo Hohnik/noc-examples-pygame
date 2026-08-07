@@ -17,7 +17,6 @@ def setup():
 
 
 def draw(screen):
-    global walker
     walker.step()
     walker.show()
 

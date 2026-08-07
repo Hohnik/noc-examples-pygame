@@ -23,7 +23,7 @@ def setup():
 
 
 def draw(screen: pygame.Surface):
-    global r, theta
+    global theta
     screen.fill((255, 255, 255))
     center = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 

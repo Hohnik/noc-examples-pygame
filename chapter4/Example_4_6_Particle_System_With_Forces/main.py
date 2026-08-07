@@ -16,7 +16,6 @@ def setup():
 
 
 def draw(screen: pygame.Surface):
-    global emitter
     screen.fill("white")
 
     # Apply gravity force to all Particles

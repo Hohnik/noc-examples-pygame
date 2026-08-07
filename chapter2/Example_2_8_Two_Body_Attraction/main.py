@@ -21,7 +21,6 @@ def setup():
 
 
 def draw(screen):
-    global bodyA, bodyB
     screen.fill((255, 255, 255))
 
     bodyA.attract(bodyB)

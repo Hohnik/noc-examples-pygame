@@ -32,7 +32,6 @@ def setup():
 
 
 def draw(screen):
-    global liquid, movers
     screen.fill((255, 255, 255))
 
     # Draw liquid

@@ -18,7 +18,7 @@ def setup():
 
 
 def draw(screen: pygame.Surface):
-    global angle, angleVelocity, angleAcceleration
+    global angle, angleVelocity
     screen.fill((255, 255, 255))
     center = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 

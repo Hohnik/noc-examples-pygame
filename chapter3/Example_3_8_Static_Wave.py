@@ -12,7 +12,7 @@ amplitude = 100
 
 
 def setup():
-    global angle, angleVelocity, amplitude
+    global angle
     screen = pygame.display.set_mode((640, 360))
     screen.fill((255, 255, 255))
 

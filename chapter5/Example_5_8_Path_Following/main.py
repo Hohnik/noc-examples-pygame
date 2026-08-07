@@ -38,7 +38,7 @@ def setup():
 
 
 def draw(screen: pygame.Surface):
-    global path, car1, car2
+    global path
     screen.fill((255, 255, 255))
 
     # Display the path

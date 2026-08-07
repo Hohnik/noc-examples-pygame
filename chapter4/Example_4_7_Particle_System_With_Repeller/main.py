@@ -22,7 +22,6 @@ def setup():
 
 
 def draw(screen: pygame.Surface):
-    global emitter
     screen.fill("white")
     emitter.addParticle()
     # We're applying a universal gravity.

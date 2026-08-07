@@ -21,7 +21,7 @@ def setup():
 
 
 def draw(screen):
-    global attractor, movers, mousePressed, running
+    global mousePressed, running
     screen.fill((255, 255, 255))
 
     force = attractor.attract(mover)

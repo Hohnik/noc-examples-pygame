@@ -36,7 +36,7 @@ def setup():
 
 
 def draw(screen: pygame.Surface):
-    global pendulum, running
+    global running
     screen.fill("white")
 
     pendulum.update()

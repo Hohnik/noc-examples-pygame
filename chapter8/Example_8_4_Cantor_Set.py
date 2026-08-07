@@ -11,7 +11,7 @@ import pygame
 def setup():
     screen = pygame.display.set_mode((640, 120))
     screen.fill((255, 255, 255))
-    width, height = screen.size
+    _width, _height = screen.size
 
     # Call the recursive function
     cantor(10, 10, 620)

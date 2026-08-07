@@ -31,7 +31,7 @@ def setup(screen: pygame.Surface):
 
 
 def draw(screen: pygame.Surface):
-    global lifeCounter, lifeSpan, population
+    global lifeCounter
     screen.fill("white")
 
     # Draw the start and target positions

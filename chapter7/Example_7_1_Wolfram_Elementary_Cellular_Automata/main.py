@@ -32,7 +32,7 @@ def setup():
 
 
 def draw():
-    global running, cells, generation
+    global cells, generation
     screen = pygame.display.get_surface()
 
     for i in range(1, len(cells) - 1):

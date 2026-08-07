@@ -21,7 +21,6 @@ def setup():
 
 
 def draw(screen):
-    global moverA, moverB
     screen.fill((255, 255, 255))
 
     gravity = pygame.Vector2(0, 0.1)

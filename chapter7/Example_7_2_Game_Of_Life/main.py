@@ -25,7 +25,7 @@ def setup():
 
 
 def draw():
-    global columns, rows, board
+    global board
     screen = pygame.display.get_surface()
 
     # The next board

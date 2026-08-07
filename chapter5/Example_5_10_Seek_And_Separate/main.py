@@ -15,7 +15,6 @@ vehicles = []
 
 
 def setup():
-    global vehicles
     screen = pygame.display.set_mode((640, 360))
 
     for i in range(50):
@@ -27,7 +26,6 @@ def setup():
 
 
 def draw(screen: pygame.Surface):
-    global vehicles
     screen.fill((255, 255, 255))
 
     for v in vehicles:

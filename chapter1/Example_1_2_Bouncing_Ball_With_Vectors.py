@@ -20,7 +20,7 @@ def setup():
 
 
 def draw(screen):
-    global position, velocity
+    global position
     screen.fill((255, 255, 255))
 
     # {!1 .bold .no-comment}

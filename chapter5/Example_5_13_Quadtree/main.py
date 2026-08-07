@@ -35,7 +35,6 @@ def setup():
 
 
 def draw(screen: pygame.Surface):
-    global qtree
     screen.fill((255, 255, 255))
     width, height = screen.size
     mouseX, mouseY = pygame.mouse.get_pos()

@@ -21,7 +21,6 @@ def setup():
 
 
 def draw(screen: pygame.Surface):
-    global emitters
     screen.fill("white")
     for emitter in emitters:
         emitter.run()

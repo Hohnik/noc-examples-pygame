@@ -16,7 +16,7 @@ def setup():
 
 
 def draw(screen):
-    global startAngle, angleVelocity
+    global startAngle
     screen.fill((255, 255, 255))
 
     angle = startAngle
