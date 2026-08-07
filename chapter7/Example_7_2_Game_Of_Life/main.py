@@ -45,9 +45,7 @@ def draw():
             neighborSum -= board[i][j]
 
             # The rules of life!
-            if board[i][j] == 1 and neighborSum < 2:
-                next[i][j] = 0
-            elif board[i][j] == 1 and neighborSum > 3:
+            if board[i][j] == 1 and neighborSum < 2 or board[i][j] == 1 and neighborSum > 3:
                 next[i][j] = 0
             elif board[i][j] == 0 and neighborSum == 3:
                 next[i][j] = 1

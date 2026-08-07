@@ -3,9 +3,9 @@
 # http://natureofcode.com
 
 import pygame
-from utils import render_text_list
+from configs import lifeCounter, lifeSpan, mutationRate, target
 from population import Population
-from configs import mutationRate, lifeSpan, lifeCounter, target
+from utils import render_text_list
 
 # Smart Rockets w/ Genetic Algorithms
 

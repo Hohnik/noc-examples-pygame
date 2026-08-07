@@ -2,10 +2,11 @@
 # Daniel Shiffman
 # http://natureofcode.com
 
-import pygame
 from random import choice
+
+import pygame
 from DNA import DNA
-from utils import wrap_text, render_text_list
+from utils import render_text_list, wrap_text
 
 # Genetic Algorithm, Evolving Shakespeare
 

@@ -2,8 +2,9 @@
 # Daniel Shiffman
 # http://natureofcode.com
 
-import pygame
 import math
+
+import pygame
 
 
 class Turtle:

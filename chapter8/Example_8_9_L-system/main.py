@@ -2,11 +2,11 @@
 # Daniel Shiffman
 # http://natureofcode.com
 
-import pygame
 import math
 
-from lsystem import LSystem
+import pygame
 from _turtle import Turtle  # _ here becuase turtle is a official library
+from lsystem import LSystem
 
 
 def setup(screen):

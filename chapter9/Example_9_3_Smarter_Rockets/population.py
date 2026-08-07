@@ -3,9 +3,10 @@
 # http://natureofcode.com
 
 import random
+
 import pygame
-from rocket import Rocket
 from dna import DNA
+from rocket import Rocket
 
 # Pathfinding w/ Genetic Algorithms
 
