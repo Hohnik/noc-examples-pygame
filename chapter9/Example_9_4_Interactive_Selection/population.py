@@ -80,7 +80,7 @@ class Population:
 
             # Mutate their genes
             child.mutate(self.mutationRate)
-            nextFlowers[i] = Flower(child, 40 + i * 80, 120)
+            nextFlowers.append(Flower(child, 10 + i * 79, 60))
 
         # Replace the old population
         self.flowers = nextFlowers
