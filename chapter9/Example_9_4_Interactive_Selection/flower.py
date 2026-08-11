@@ -6,7 +6,7 @@ import math
 
 import pygame
 from rectangle import Rectangle
-from utils import map_value, Text
+from utils import Text, map_value
 
 # Interactive Selection
 # http://www.genarts.com/karl/papers/siggraph91.html
