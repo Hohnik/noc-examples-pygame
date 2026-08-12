@@ -27,8 +27,6 @@ def setup(screen: pygame.Surface):
 def draw(screen: pygame.Surface):
     screen.fill("white")
 
-    for event in pygame.event.get():
-        button.handle_event(event)
     button.draw(screen)
 
     # Draw the flowert
@@ -41,8 +39,9 @@ def draw(screen: pygame.Surface):
     text.draw(screen)
 
 
+# If the button is pressed, evolve next generation
 def nextGeneration():
-    population.weightedSelection()
+    population.selection()
     population.reproduction()
 
 
@@ -56,6 +55,7 @@ if __name__ == "__main__":
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            button.handle_event(event)
         draw(screen)
         pygame.display.update()
         clock.tick(60)
