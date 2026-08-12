@@ -3,8 +3,8 @@
 Every example from Daniel Shiffman's [*The Nature of Code*](https://natureofcode.com/),
 ported to Python 3.12+ and [pygame-ce](https://github.com/pygame-community/pygame-ce).
 
-<!-- TODO: replace with a colage GIF that shows a few seconds the most exciting programms. -->
-![GIF](gif-path.gif)
+<!-- TODO: replace static collage with an animated GIF -->
+![A collage of screenshots from The Nature of Code examples](.github/assets/collage.png)
 
 ---
 
